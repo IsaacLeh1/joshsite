@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Talent Profile Results - TalentMatch</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- HEADER & NAVIGATION -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">TalentMatch</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="quiz.html">Take the Quiz</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- RESULTS CONTAINER -->
+  <section>
+    <div class="results-container">
+      <!-- TALENT TYPE HEADLINE -->
+      <div class="talent-type-box">
+        <h2 id="talentTypeName">Analytical Problem Solver</h2>
+        <p id="talentTypeDescription">You excel at breaking down complex problems, thinking critically, and finding data-driven solutions.</p>
+      </div>
+
+      <!-- YOUR STRENGTHS -->
+      <div class="results-card">
+        <h3>🎯 Your Core Strengths</h3>
+        <ul id="strengtsList">
+          <li>Logical and analytical thinking</li>
+          <li>Problem-solving and system design</li>
+          <li>Attention to patterns and details</li>
+          <li>Research and investigation skills</li>
+          <li>Breaking down complexity</li>
+        </ul>
+      </div>
+
+      <!-- WORK STYLE PREFERENCES -->
+      <div class="results-card">
+        <h3>💼 You Thrive In Environments Where:</h3>
+        <ul id="environmentList">
+          <li>Complex problems need solving</li>
+          <li>Your work is evaluated on quality and accuracy</li>
+          <li>There's time for deep focus and thinking</li>
+          <li>You can research and learn new domains</li>
+          <li>Data and evidence drive decisions</li>
+        </ul>
+      </div>
+
+      <!-- WHAT DRAINS YOU -->
+      <div class="results-card">
+        <h3>⚡ What Might Drain You:</h3>
+        <ul id="drainsList">
+          <li>Constant interruptions and shallow tasks</li>
+          <li>Making decisions without enough information</li>
+          <li>High-pressure social or emotional work</li>
+          <li>Repetitive tasks with no learning</li>
+          <li>Fuzzy requirements and unclear objectives</li>
+        </ul>
+      </div>
+
+      <!-- SUGGESTED CAREERS -->
+      <div class="results-card">
+        <h3>🚀 Suggested Career Paths</h3>
+        <p style="margin-bottom: 1.5rem; color: var(--text-gray);">Based on your talent profile, you'd likely excel in:</p>
+        <div class="career-tags" id="careersList">
+          <span class="career-tag">Software Engineer</span>
+          <span class="career-tag">Data Scientist</span>
+          <span class="career-tag">Research Analyst</span>
+          <span class="career-tag">Systems Architect</span>
+          <span class="career-tag">Financial Analyst</span>
+          <span class="career-tag">UX Researcher</span>
+          <span class="career-tag">Product Manager</span>
+          <span class="career-tag">Consultant</span>
+        </div>
+      </div>
+
+      <!-- CAREER DESCRIPTION -->
+      <div class="results-card">
+        <h3>📚 Recommended Industries</h3>
+        <ul id="industriesList">
+          <li><strong>Technology:</strong> Software development, AI/ML, data analytics</li>
+          <li><strong>Finance:</strong> Investment analysis, risk management, financial planning</li>
+          <li><strong>Research & Development:</strong> Scientific research, product development</li>
+          <li><strong>Consulting:</strong> Business analysis, strategic consulting</li>
+          <li><strong>Healthcare:</strong> Medical research, healthcare analytics</li>
+          <li><strong>Education:</strong> Advanced research, academic positions</li>
+        </ul>
+      </div>
+
+      <!-- NEXT STEPS -->
+      <div class="results-card">
+        <h3>📍 Next Steps</h3>
+        <ul id="nextStepsList">
+          <li>Explore online courses in your areas of interest (Coursera, Udacity, etc.)</li>
+          <li>Look for internships or entry roles in your target fields</li>
+          <li>Build a portfolio of analysis/projects to showcase your skills</li>
+          <li>Connect with professionals in careers that interest you</li>
+          <li>Consider certifications in data analysis, programming, or your target field</li>
+        </ul>
+      </div>
+
+      <!-- IMPORTANT NOTE -->
+      <div style="background-color: #F0F9FF; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; border-left: 4px solid var(--accent);">
+        <p style="color: var(--text-dark); font-size: 0.95rem;">
+          <strong>💡 Remember:</strong> This profile reveals your natural talents, not your only options. You can build skills outside your natural type through effort and training. Use these insights to find roles where you'll thrive, not to limit yourself.
+        </p>
+      </div>
+
+      <!-- RETAKE BUTTON -->
+      <div class="retake-button">
+        <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Want to explore other talent types?</p>
+        <a href="quiz.html" class="btn btn-secondary">Retake the Quiz</a>
+        <p style="color: var(--text-gray); margin-top: 1.5rem; font-size: 0.95rem;">Or share your results and explore careers further on your own.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section style="background-color: #F8FAFC;">
+    <div class="container">
+      <div style="text-align: center;">
+        <h2>Ready to Explore Your Career Options?</h2>
+        <p style="margin-bottom: 1.5rem;">Research the careers that interest you and start building your path.</p>
+        <a href="https://www.linkedin.com" class="btn btn-secondary" target="_blank">Explore on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 TalentMatch. Helping you find your perfect career path.</p>
+    <p><a href="about.html">About Us</a> | <a href="#">Contact</a> | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <!-- RESULTS JAVASCRIPT (Will populate from quiz answers) -->
+  <script src="../js/results.js"></script>
+</body>
+</html>

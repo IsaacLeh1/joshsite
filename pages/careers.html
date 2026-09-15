@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Careers - TalentMatch</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .careers-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .category-section {
+      margin-bottom: 3rem;
+    }
+
+    .category-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .careers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .career-card {
+      background: var(--light-bg);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .career-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 16px rgba(56, 189, 248, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .career-card h4 {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .career-card p {
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      margin-bottom: 1rem;
+    }
+
+    .career-talent-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .talent-tag {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: var(--white);
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      max-width: 700px;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--text-gray);
+      background: none;
+      border: none;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease;
+    }
+
+    .close-btn:hover {
+      color: var(--accent);
+    }
+
+    .modal h2 {
+      color: var(--accent);
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .modal h3 {
+      color: var(--text-dark);
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .modal ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .modal li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-gray);
+    }
+
+    .modal li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .talent-fit {
+      background: #F0F9FF;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+      margin: 1.5rem 0;
+    }
+
+    .talent-fit-title {
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .talent-fit-content {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+    }
+
+    .salary-info {
+      background: #F8FAFC;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .education-level {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      border: 2px solid var(--border-light);
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* Filter Controls */
+    .filter-controls {
+      max-width: 800px;
+      margin: 1rem auto 2rem auto;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .filter-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .filter-group input,
+    .filter-group select {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 2px solid var(--border-light);
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+    }
+
+    .filter-group input:focus,
+    .filter-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .clear-filters-btn {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: auto;
+    }
+
+    .clear-filters-btn:hover {
+      background-color: #0ea5e9;
+      transform: translateY(-2px);
+    }
+
+    .careers-count {
+      text-align: center;
+      color: var(--text-gray);
+      margin: 1.5rem 0 2.5rem 0;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 768px) {
+      .careers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        padding: 1.5rem;
+        max-width: 95vw;
+      }
+
+      .close-btn {
+        top: 0.5rem;
+        right: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER & NAVIGATION -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">TalentMatch</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="quiz.html">Take the Quiz</a></li>
+        <li><a href="careers.html" style="color: var(--accent); font-weight: 600;">Careers</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="hero">
+    <div class="hero-container">
+      <h1>Explore <span id="heroCareerCount">500+</span> Careers</h1>
+      <p>Discover detailed information about careers organized by industry and talent type. Click any career to learn more.</p>
+    </div>
+  </section>
+
+  <!-- SEARCH BAR -->
+  <section>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search careers... (e.g., 'engineer', 'teacher', 'designer')">
+    </div>
+    
+    <!-- FILTER CONTROLS -->
+    <div class="filter-controls">
+      <div class="filter-group">
+        <label for="minSalaryInput">Minimum Salary</label>
+        <input type="number" id="minSalaryInput" placeholder="e.g., 50000" min="0" step="5000">
+      </div>
+      <div class="filter-group">
+        <label for="categoryFilter">Career Type</label>
+        <select id="categoryFilter">
+          <option value="">All Categories</option>
+        </select>
+      </div>
+      <button class="clear-filters-btn" id="clearFiltersBtn">Clear Filters</button>
+    </div>
+    
+    <p class="careers-count">Showing <span id="careerCount">207</span> careers</p>
+  </section>
+
+  <!-- CAREERS CONTAINER -->
+  <section class="careers-page" id="careersContainer">
+    <!-- Categories will be dynamically generated here -->
+  </section>
+
+  <!-- CAREER DETAIL MODAL -->
+  <div id="careerModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn">&times;</button>
+      <h2 id="modalCareerName"></h2>
+      <p id="modalCareerSummary"></p>
+      
+      <h3>Key Responsibilities</h3>
+      <ul id="modalResponsibilities"></ul>
+
+      <h3>Required Skills</h3>
+      <ul id="modalSkills"></ul>
+
+      <div class="talent-fit">
+        <div class="talent-fit-title">Best Suited For:</div>
+        <div class="talent-fit-content" id="modalTalentFit"></div>
+      </div>
+
+      <span class="education-level" id="modalEducation"></span>
+
+      <div id="degreeSection" style="display: none; margin: 1.5rem 0;">
+        <h3>Required Degrees</h3>
+        <ul id="modalDegrees"></ul>
+        
+        <div class="salary-info">
+          <strong>Average Degree Cost:</strong> <span id="modalDegreeCost"></span>
+        </div>
+      </div>
+
+      <div class="salary-info">
+        <strong>Median Salary:</strong> <span id="modalSalary"></span>
+      </div>
+
+      <h3>Career Path</h3>
+      <p id="modalCareerPath"></p>
+
+      <h3>Work Environment</h3>
+      <ul id="modalEnvironment"></ul>
+
+      <h3>Job Growth</h3>
+      <p id="modalJobGrowth"></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 TalentMatch. Helping you find your perfect career path.</p>
+    <p><a href="about.html">About Us</a> | <a href="#">Contact</a> | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <script src="../js/careers.js"></script>
+  <script>
+    // Category emoji map
+    const categoryEmojis = {
+      'tech': '💻',
+      'healthcare': '🏥',
+      'education': '🎓',
+      'business': '💼',
+      'finance': '💰',
+      'creative': '🎨',
+      'design': '🎨',
+      'trades': '🔧',
+      'sales': '📢',
+      'marketing': '📢',
+      'hr': '⚖️',
+      'gov': '🏛️',
+      'science': '🔬',
+      'arts': '🎭',
+      'hospitality': '🏨',
+      'emergency': '🚨',
+      'energy': '⚡',
+      'engineering': '🔧',
+      'manufacturing': '🏭',
+      'agriculture': '🌾',
+      'environment': '🌍',
+      'fire': '🔥',
+      'administrative': '📋',
+      'leadership': '👔',
+      'military': '🎖️',
+      'automotive': '🚗',
+      'aviation': '✈️',
+      'clerical': '📑',
+      'construction': '🏗️',
+      'data': '📊',
+      'legal': '⚖️',
+      'library': '📚',
+      'media': '📺',
+      'religion': '✝️',
+      'shipping': '📦',
+      'social': '🤝',
+      'sports': '⚽',
+      'transportation': '🚌',
+      'vehicle': '🚙',
+      'maintenance': '🔩',
+      'food': '🍽️'
+    };
+
+    // Category name formatting
+    const categoryNames = {
+      'tech': 'Technology & IT',
+      'healthcare': 'Healthcare & Medical',
+      'education': 'Education & Academia',
+      'business': 'Business',
+      'finance': 'Finance',
+      'creative': 'Creative & Design',
+      'design': 'Design',
+      'trades': 'Trades & Crafts',
+      'sales': 'Sales & Marketing',
+      'marketing': 'Marketing',
+      'hr': 'Human Resources & Law',
+      'gov': 'Government & Public Service',
+      'science': 'Science & Research',
+      'arts': 'Arts & Entertainment',
+      'hospitality': 'Hospitality & Tourism',
+      'emergency': 'Emergency & Safety',
+      'energy': 'Energy',
+      'engineering': 'Engineering',
+      'manufacturing': 'Manufacturing',
+      'agriculture': 'Agriculture & Farming',
+      'environment': 'Environmental',
+      'fire': 'Fire Services',
+      'administrative': 'Administrative',
+      'leadership': 'Leadership & Management',
+      'military': 'Military',
+      'automotive': 'Automotive',
+      'aviation': 'Aviation',
+      'clerical': 'Clerical',
+      'construction': 'Construction',
+      'data': 'Data & Analytics',
+      'legal': 'Legal',
+      'library': 'Library Services',
+      'media': 'Media & Communications',
+      'religion': 'Religious',
+      'shipping': 'Shipping & Logistics',
+      'social': 'Social Services',
+      'sports': 'Sports & Recreation',
+      'transportation': 'Transportation',
+      'vehicle': 'Vehicle Operations',
+      'maintenance': 'Maintenance & Repair',
+      'food': 'Food Service'
+    };
+
+    let allCareers = [];
+
+    // Parse salary string to get minimum value
+    function parseMinSalary(salaryString) {
+      if (!salaryString || salaryString.toLowerCase().includes('varies')) {
+        return 0;
+      }
+      const match = salaryString.match(/\$([\d,]+)/);
+      if (match) {
+        return parseInt(match[1].replace(/,/g, ''));
+      }
+      return 0;
+    }
+
+    // Populate category filter dropdown
+    function populateCategoryFilter() {
+      const categoryFilter = document.getElementById('categoryFilter');
+      const categories = Object.keys(careersDatabase).sort();
+      
+      categories.forEach(category => {
+        if (Array.isArray(careersDatabase[category]) && careersDatabase[category].length > 0) {
+          const displayName = categoryNames[category] || category.charAt(0).toUpperCase() + category.slice(1);
+          const option = document.createElement('option');
+          option.value = category;
+          option.textContent = displayName;
+          categoryFilter.appendChild(option);
+        }
+      });
+    }
+
+    // Populate careers from database
+    function populateCareers(filterQuery = '', minSalary = 0, selectedCategory = '') {
+      allCareers = [];
+      const container = document.getElementById('careersContainer');
+      container.innerHTML = '';
+
+      // Collect all careers from all categories
+      for (let category in careersDatabase) {
+        if (Array.isArray(careersDatabase[category])) {
+          careersDatabase[category].forEach(career => {
+            allCareers.push({
+              ...career,
+              category: category
+            });
+          });
+        }
+      }
+
+      // Apply filters
+      let filteredCareers = allCareers;
+      
+      // Filter by search query
+      if (filterQuery) {
+        filteredCareers = filteredCareers.filter(career =>
+          career.name.toLowerCase().includes(filterQuery) ||
+          career.summary.toLowerCase().includes(filterQuery) ||
+          career.skills.some(skill => skill.toLowerCase().includes(filterQuery))
+        );
+      }
+      
+      // Filter by minimum salary
+      if (minSalary > 0) {
+        filteredCareers = filteredCareers.filter(career => {
+          const careerMinSalary = parseMinSalary(career.salary);
+          return careerMinSalary >= minSalary;
+        });
+      }
+      
+      // Filter by category
+      if (selectedCategory) {
+        filteredCareers = filteredCareers.filter(career => 
+          career.category === selectedCategory
+        );
+      }
+
+      // Update count
+      document.getElementById('careerCount').textContent = filteredCareers.length;
+      if (!filterQuery && !minSalary && !selectedCategory) {
+        document.getElementById('heroCareerCount').textContent = allCareers.length;
+      }
+
+      // Group filtered careers by category
+      const categorizedCareers = {};
+      filteredCareers.forEach(career => {
+        if (!categorizedCareers[career.category]) {
+          categorizedCareers[career.category] = [];
+        }
+        categorizedCareers[career.category].push(career);
+      });
+      
+      // Create sections for each category
+      const categories = Object.keys(categorizedCareers).sort();
+      
+      categories.forEach(category => {
+        const emoji = categoryEmojis[category] || '📌';
+        const displayName = categoryNames[category] || category.charAt(0).toUpperCase() + category.slice(1);
+
+        const section = document.createElement('div');
+        section.className = 'category-section';
+
+        const title = document.createElement('h3');
+        title.className = 'category-title';
+        title.textContent = `${emoji} ${displayName}`;
+
+        const grid = document.createElement('div');
+        grid.className = 'careers-grid';
+        grid.id = `${category}-careers`;
+
+        categorizedCareers[category].forEach(career => {
+          grid.appendChild(createCareerCard(career));
+        });
+
+        section.appendChild(title);
+        section.appendChild(grid);
+        container.appendChild(section);
+      });
+    }
+
+    // Apply all filters
+    function applyFilters() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const minSalary = parseInt(document.getElementById('minSalaryInput').value) || 0;
+      const category = document.getElementById('categoryFilter').value;
+      populateCareers(query, minSalary, category);
+    }
+
+    function createCareerCard(career) {
+      const card = document.createElement('div');
+      card.className = 'career-card';
+      card.innerHTML = `
+        <h4>${career.name}</h4>
+        <p>${career.summary}</p>
+        <div class="career-talent-tags">
+          <span class="talent-tag">${career.talentFit.split(',')[0].trim()}</span>
+        </div>
+      `;
+      card.addEventListener('click', () => openCareerModal(career));
+      return card;
+    }
+
+    function openCareerModal(career) {
+      document.getElementById('modalCareerName').textContent = career.name;
+      document.getElementById('modalCareerSummary').textContent = career.summary;
+      
+      // Responsibilities
+      const respList = document.getElementById('modalResponsibilities');
+      respList.innerHTML = '';
+      career.responsibilities.forEach(resp => {
+        const li = document.createElement('li');
+        li.textContent = resp;
+        respList.appendChild(li);
+      });
+
+      // Skills
+      const skillsList = document.getElementById('modalSkills');
+      skillsList.innerHTML = '';
+      career.skills.forEach(skill => {
+        const li = document.createElement('li');
+        li.textContent = skill;
+        skillsList.appendChild(li);
+      });
+
+      // Talent Fit
+      document.getElementById('modalTalentFit').textContent = career.talentFit;
+
+      // Education
+      document.getElementById('modalEducation').textContent = career.education;
+
+      // Degrees and Costs (if available)
+      const degreeSection = document.getElementById('degreeSection');
+      if (career.degrees && career.degrees.length > 0) {
+        degreeSection.style.display = 'block';
+        
+        const degreesList = document.getElementById('modalDegrees');
+        degreesList.innerHTML = '';
+        career.degrees.forEach(degree => {
+          const li = document.createElement('li');
+          li.textContent = degree;
+          degreesList.appendChild(li);
+        });
+        
+        document.getElementById('modalDegreeCost').textContent = career.degreeCost || 'Varies';
+      } else {
+        degreeSection.style.display = 'none';
+      }
+
+      // Salary
+      document.getElementById('modalSalary').textContent = career.salary;
+
+      // Career Path
+      document.getElementById('modalCareerPath').textContent = career.careerPath;
+
+      // Environment
+      const envList = document.getElementById('modalEnvironment');
+      envList.innerHTML = '';
+      career.environment.forEach(env => {
+        const li = document.createElement('li');
+        li.textContent = env;
+        envList.appendChild(li);
+      });
+
+      // Job Growth
+      document.getElementById('modalJobGrowth').textContent = career.jobGrowth;
+
+      // Show modal
+      document.getElementById('careerModal').classList.add('active');
+    }
+
+    function closeCareerModal() {
+      document.getElementById('careerModal').classList.remove('active');
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('minSalaryInput').addEventListener('input', applyFilters);
+    document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+
+    // Clear filters button
+    document.getElementById('clearFiltersBtn').addEventListener('click', () => {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('minSalaryInput').value = '';
+      document.getElementById('categoryFilter').value = '';
+      populateCareers();
+    });
+
+    // Modal close button
+    document.querySelector('.close-btn').addEventListener('click', closeCareerModal);
+
+    // Close modal when clicking outside
+    document.getElementById('careerModal').addEventListener('click', (e) => {
+      if (e.target.id === 'careerModal') {
+        closeCareerModal();
+      }
+    });
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      populateCategoryFilter();
+      populateCareers();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+node_modules/
+__pycache__/
+*.pyc
+
+# secrets
+.env
+.env.*
+
+# OS noise
+Thumbs.db
+desktop.ini
+.DS_Store

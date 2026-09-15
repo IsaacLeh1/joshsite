@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Discovery Quiz - TalentMatch</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- HEADER & NAVIGATION -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">TalentMatch</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="quiz.html">Take the Quiz</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- QUIZ CONTAINER -->
+  <section>
+    <div class="quiz-container">
+      <!-- PROGRESS BAR -->
+      <div class="quiz-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+        </div>
+        <p class="progress-text"><span id="currentQuestion">1</span> of <span id="totalQuestions">15</span></p>
+      </div>
+
+      <!-- QUIZ FORM -->
+      <form id="quizForm">
+        <!-- Question 1 -->
+        <div class="quiz-question">
+          <h4>1. When solving a problem, you tend to:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="creative" required>
+              <span>Look for creative, unconventional solutions</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="analytical">
+              <span>Analyze data and break it down logically</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="practical">
+              <span>Jump in and try practical approaches</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="people">
+              <span>Ask others for their perspectives</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-question">
+          <h4>2. In a team project, you naturally:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="leader" required>
+              <span>Take charge and set the direction</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="analytical">
+              <span>Research and ensure quality standards</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="people">
+              <span>Make sure everyone feels heard</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="organizer">
+              <span>Keep things organized and on track</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-question">
+          <h4>3. What environment makes you most productive?</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="creative" required>
+              <span>Open, flexible spaces with freedom to innovate</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="analytical">
+              <span>Quiet, focused environment for deep work</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="practical">
+              <span>Hands-on environment with tangible projects</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="people">
+              <span>Collaborative team setting with regular interaction</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="quiz-question">
+          <h4>4. You feel most energized when you:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="creative" required>
+              <span>Brainstorm new ideas and possibilities</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="analytical">
+              <span>Understand how something works deeply</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="practical">
+              <span>See a project through to completion</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="people">
+              <span>Help someone overcome a challenge</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="quiz-question">
+          <h4>5. When faced with a tight deadline, you:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="leader" required>
+              <span>Rally the team and drive toward the goal</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="organizer">
+              <span>Organize tasks and create a clear plan</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="practical">
+              <span>Focus on getting it done, no distractions</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="analytical">
+              <span>Prioritize quality over speed</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="quiz-question">
+          <h4>6. Your biggest strength at work is:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="creative" required>
+              <span>Coming up with fresh ideas and angles</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="analytical">
+              <span>Solving complex problems methodically</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="practical">
+              <span>Getting things built and working</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="people">
+              <span>Understanding and supporting others</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="quiz-question">
+          <h4>7. Feedback about your work style would most likely be:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="creative" required>
+              <span>"You're full of creative ideas"</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="analytical">
+              <span>"You really dig deep into details"</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="organizer">
+              <span>"You keep everything well-organized"</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="leader">
+              <span>"People naturally follow your lead"</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="quiz-question">
+          <h4>8. When learning something new, you prefer to:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="practical" required>
+              <span>Jump in and learn by doing</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="analytical">
+              <span>Study comprehensive documentation</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="people">
+              <span>Have someone explain it to you</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="creative">
+              <span>Experiment and find your own way</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="quiz-question">
+          <h4>9. What kind of work feels like a burden to you?</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="analytical" required>
+              <span>Repetitive tasks with no learning</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="practical">
+              <span>Only theory, no hands-on application</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="people">
+              <span>Rigid rules that ignore individual needs</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="creative">
+              <span>Micromanagement and strict parameters</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="quiz-question">
+          <h4>10. You're most likely to succeed in a role where:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="leader" required>
+              <span>You have authority and influence</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="organizer">
+              <span>Systems and processes are clear</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="people">
+              <span>You can directly impact people's lives</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="creative">
+              <span>You can experiment and innovate</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="quiz-question">
+          <h4>11. When working solo, you:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q11" value="analytical" required>
+              <span>Enjoy going deep into complex work</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q11" value="practical">
+              <span>Get things done efficiently</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q11" value="creative">
+              <span>Explore different approaches freely</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q11" value="people">
+              <span>Feel somewhat disconnected</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="quiz-question">
+          <h4>12. Your ideal career outcome would be:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q12" value="leader" required>
+              <span>Leading an organization or team</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q12" value="analytical">
+              <span>Being an expert in your field</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q12" value="people">
+              <span>Making meaningful difference in lives</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q12" value="practical">
+              <span>Creating something tangible and useful</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="quiz-question">
+          <h4>13. How do you respond to change and uncertainty?</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q13" value="creative" required>
+              <span>Excited! Change brings opportunities</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q13" value="analytical">
+              <span>Cautious. I want to understand it first</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q13" value="practical">
+              <span>Let's adapt and move forward</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q13" value="organizer">
+              <span>I need clear plans and process</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="quiz-question">
+          <h4>14. The word that best describes you at work is:</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q14" value="creative" required>
+              <span>Visionary</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q14" value="analytical">
+              <span>Thorough</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q14" value="practical">
+              <span>Resourceful</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q14" value="people">
+              <span>Compassionate</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="quiz-question">
+          <h4>15. What would make a job feel "perfect" to you?</h4>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q15" value="creative" required>
+              <span>Freedom to try new approaches</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q15" value="analytical">
+              <span>Depth and mastery in my domain</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q15" value="practical">
+              <span>Autonomy and measurable results</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q15" value="people">
+              <span>Helping others grow and succeed</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <button type="submit" class="btn btn-primary" style="width: 100%; max-width: 300px;">
+            See My Results
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 TalentMatch. Helping you find your perfect career path.</p>
+    <p><a href="about.html">About Us</a> | <a href="#">Contact</a> | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <!-- QUIZ JAVASCRIPT (Will be integrated with Velo on Wix) -->
+  <script src="../js/quiz.js"></script>
+</body>
+</html>

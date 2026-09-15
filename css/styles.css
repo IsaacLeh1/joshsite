@@ -1,0 +1,549 @@
+/* ====================================
+   GLOBAL STYLES & VARIABLES
+   ==================================== */
+
+:root {
+  --primary: #1E293B;
+  --accent: #38BDF8;
+  --light-bg: #F8FAFC;
+  --text-dark: #1E293B;
+  --text-gray: #64748B;
+  --border-light: #E2E8F0;
+  --white: #FFFFFF;
+  
+  --font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --spacing: 1rem;
+  --radius: 10px;
+  --radius-btn: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  line-height: 1.6;
+  background-color: var(--white);
+}
+
+/* ====================================
+   TYPOGRAPHY
+   ==================================== */
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+p {
+  font-size: 1.1rem;
+  color: var(--text-gray);
+  margin-bottom: 1rem;
+}
+
+.text-small {
+  font-size: 0.95rem;
+  color: var(--text-gray);
+}
+
+/* ====================================
+   BUTTONS
+   ==================================== */
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-btn);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: #0EA5E9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(56, 189, 248, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--white);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+/* ====================================
+   HEADER & NAVIGATION
+   ==================================== */
+
+header {
+  background-color: var(--white);
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* ====================================
+   HERO SECTION
+   ==================================== */
+
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #334155 100%);
+  color: var(--white);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.hero-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  color: var(--white);
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero .btn {
+  margin-top: 1rem;
+}
+
+/* ====================================
+   SECTIONS & CONTAINERS
+   ==================================== */
+
+section {
+  padding: 4rem 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-intro h2 {
+  margin-bottom: 1rem;
+}
+
+.section-intro p {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ====================================
+   THREE-COLUMN GRID (How It Works)
+   ==================================== */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.feature-card {
+  background: var(--light-bg);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--accent);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  color: var(--text-gray);
+}
+
+/* ====================================
+   QUIZ PAGE STYLES
+   ==================================== */
+
+.quiz-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.quiz-question {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.quiz-question:last-child {
+  border-bottom: none;
+}
+
+.quiz-question h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quiz-option {
+  padding: 1rem;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--white);
+}
+
+.quiz-option:hover {
+  border-color: var(--accent);
+  background-color: #F0F9FF;
+}
+
+.quiz-option input[type="radio"] {
+  margin-right: 0.75rem;
+  cursor: pointer;
+}
+
+.quiz-option.selected {
+  background-color: #F0F9FF;
+  border-color: var(--accent);
+}
+
+.quiz-progress {
+  margin-bottom: 2rem;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: var(--light-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: var(--text-gray);
+}
+
+/* ====================================
+   RESULTS PAGE STYLES
+   ==================================== */
+
+.results-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.talent-type-box {
+  background: linear-gradient(135deg, var(--accent) 0%, #0EA5E9 100%);
+  color: var(--white);
+  padding: 3rem;
+  border-radius: var(--radius);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.talent-type-box h2 {
+  color: var(--white);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.talent-type-box p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.15rem;
+}
+
+.results-card {
+  background: var(--light-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+}
+
+.results-card h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.results-card ul {
+  list-style: none;
+  margin-left: 0;
+}
+
+.results-card li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.results-card li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.career-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.career-tag {
+  background-color: var(--accent);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.retake-button {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+/* ====================================
+   FOOTER
+   ==================================== */
+
+footer {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+footer p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ====================================
+   MOBILE RESPONSIVE
+   ==================================== */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  section {
+    padding: 2.5rem 1.5rem;
+  }
+
+  nav ul {
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .quiz-container {
+    padding: 2rem 1rem;
+  }
+
+  .results-container {
+    padding: 2rem 1rem;
+  }
+
+  .talent-type-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .talent-type-box h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  header {
+    padding: 1rem;
+  }
+
+  section {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+}
